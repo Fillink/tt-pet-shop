@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<ui:composition template="_template.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<p:panel header="Conversor e Validador">
+				<h:panelGrid columns="3">
+					<p:outputLabel value="Validate Doble Range"
+						for="validateDobleRange" />
+					<p:inputText id="validateDobleRange"
+						value="#{validadoConversorBean.preco}" required="true"
+						requiredMessage="Valor Obrigatório">
+						<f:validateDoubleRange minimum="1" maximum="100" />
+						<f:convertNumber type="currency" maxFractionDigits="2"
+							minFractionDigits="2" />
+					</p:inputText>
+					<p:message for="validateDobleRange" />
+
+					<p:outputLabel value="Validate Long Range" for="validateLongRange" />
+					<p:inputText id="validateLongRange"
+						value="#{validadoConversorBean.quantidade}" required="true"
+						requiredMessage="Valor Obrigatório">
+						<f:validateLongRange minimum="1" maximum="10" />
+					</p:inputText>
+					<p:message for="validateLongRange" />
+
+					<p:outputLabel value="Validate Data" for="validateData" />
+					<p:inputText id="validateData"
+						value="#{validadoConversorBean.dataNascimento}" required="true"
+						requiredMessage="Valor Obrigatório">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:inputText>
+					<p:message for="validateData" />
+
+					<p:outputLabel value="Validate Length" for="validateLength" />
+					<p:inputText id="validateLength"
+						value="#{validadoConversorBean.nome}" required="true"
+						requiredMessage="Valor Obrigatório">
+						<f:validateLength minimum="3" maximum="120" />
+					</p:inputText>
+					<p:message for="validateLength" />
+
+					<p:commandButton action="#{validadoConversorBean.salvar}" id="btSalvar"
+					actionListener="#{validadoConversorBean.verificar}"
+						update="@form"
+						value="Salvar" />
+						
+					<p:commandButton action="#{validadoConversorBean.cancelar}"
+						immediate="true" update="@form" resetValues="true"
+						value="Cancelar" />
+
+
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

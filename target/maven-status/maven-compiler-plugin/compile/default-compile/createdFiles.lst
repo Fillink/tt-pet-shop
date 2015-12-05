@@ -5,6 +5,7 @@ br\com\tt\web\pet\validador\CpfValidador.class
 br\com\tt\web\pet\controller\bean\ProprietarioBean.class
 br\com\tt\web\pet\model\Proprietario.class
 br\com\tt\web\pet\layout\LayoutController.class
-br\com\tt\web\pet\dao\PetDao.class
 br\com\tt\web\pet\model\Pet.class
+br\com\tt\web\pet\dao\Dao.class
+br\com\tt\web\pet\controller\bean\ValidadoConversorBean.class
 br\com\tt\web\pet\util\MessageUtil.class
